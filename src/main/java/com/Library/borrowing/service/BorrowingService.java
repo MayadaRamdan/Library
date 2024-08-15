@@ -1,41 +1,44 @@
 package com.Library.borrowing.service;
 
 import com.Library.book.entity.Book;
-import com.Library.book.mapper.BookMapping;
-import com.Library.book.service.BookService;
+import com.Library.book.repo.BookRepo;
 import com.Library.borrowing.entity.Borrowing;
-import com.Library.patron.entity.Patron;
 import com.Library.borrowing.reop.BorrowingRepo;
-import com.Library.patron.mapper.PatronMapper;
-import com.Library.patron.service.PatronService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.Library.exceptions.BookNotFoundException;
+import com.Library.exceptions.PatronNotFoundException;
+import com.Library.patron.entity.Patron;
+import com.Library.patron.repo.PatronRepo;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
 @Service
+@AllArgsConstructor
 public class BorrowingService {
 
-    @Autowired
-    BorrowingRepo borrowingRepo;
-
-    @Autowired
-    BookService bookService;
-
-    @Autowired
-    PatronService patronService;
+    private final BorrowingRepo borrowingRepo;
+    private final BookRepo bookRepo;
+    private final PatronRepo patronRepo;
 
     @Transactional
-    public void addBorrowing( Long bookId , Long patronId){
-        Patron patron= PatronMapper.toPatronEntity( patronService.getAPatron(patronId));
-        Book book= BookMapping.toBook(bookService.getABook(bookId));
-        borrowingRepo.save(new Borrowing(book ,patron ,LocalDateTime.now() , null));
+    public void addBorrowing(Long bookId, Long patronId) {
+
+        Book book = bookRepo.findById(bookId)
+                .orElseThrow(() -> new BookNotFoundException(""));
+
+        Patron patron =patronRepo.findById(patronId)
+                        .orElseThrow(()-> new PatronNotFoundException(""));
+
+        Borrowing borrowing = new Borrowing(book, patron, LocalDateTime.now(), null);
+        borrowingRepo.save(borrowing);
+
     }
 
     @Transactional
-    public void returnBorrowing( Long bookId , Long patronId){
-       Borrowing borrowing= borrowingRepo.findByIds(bookId ,patronId).get();
+    public void returnBorrowing(Long bookId, Long patronId) {
+        Borrowing borrowing = borrowingRepo.findByIds(bookId, patronId).get();
         borrowing.setReturnDate(LocalDateTime.now());
         borrowingRepo.save(borrowing);
     }

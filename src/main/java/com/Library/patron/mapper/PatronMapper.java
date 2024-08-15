@@ -1,7 +1,5 @@
 package com.Library.patron.mapper;
 
-import com.Library.book.dto.BookDto;
-import com.Library.book.entity.Book;
 import com.Library.patron.dto.PatronDto;
 import com.Library.patron.entity.Patron;
 

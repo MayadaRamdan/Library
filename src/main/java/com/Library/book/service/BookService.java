@@ -5,28 +5,22 @@ import com.Library.book.BookStatus;
 import com.Library.book.dto.BookDto;
 import com.Library.book.entity.Book;
 import com.Library.book.mapper.BookMapping;
-import com.Library.common.ApiResponse;
 import com.Library.exceptions.BookNotFoundException;
 import com.Library.book.repo.BookRepo;
-import com.Library.patron.dto.PatronDto;
-import com.Library.patron.entity.Patron;
-import com.Library.patron.mapper.PatronMapper;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class BookService {
-    @Autowired
-    ISBNValidator isbnValidator;
 
-    @Autowired
-    BookRepo bookRepo ;
+    private final ISBNValidator isbnValidator;
+
+    private final BookRepo bookRepo ;
 
 
     @Transactional(readOnly = true)
@@ -39,7 +33,7 @@ public class BookService {
     }
 
     @Transactional(readOnly = true)
-    public BookDto getABook( long id){
+    public BookDto getBook(long id){
 
         Optional<Book> byId = bookRepo.findById(id);
         if( byId.isPresent()){

@@ -4,6 +4,7 @@ import com.Library.common.ApiResponse;
 import com.Library.patron.dto.PatronDto;
 import com.Library.patron.service.PatronService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/patrons")
+@AllArgsConstructor
 public class PatronController {
-    @Autowired
-    PatronService patronService;
+
+    private final PatronService patronService;
 
     @GetMapping
     public ResponseEntity<ApiResponse> getAllPatron() {

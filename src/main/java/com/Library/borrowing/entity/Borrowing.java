@@ -1,7 +1,6 @@
 package com.Library.borrowing.entity;
 
 import com.Library.book.entity.Book;
-import com.Library.borrowing.dto.BorrowingDto;
 import com.Library.patron.entity.Patron;
 import jakarta.persistence.*;
 import lombok.*;

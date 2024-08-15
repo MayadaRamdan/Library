@@ -1,6 +1,5 @@
 package com.Library.book.repo;
 
-import com.Library.admin.entity.Admin;
 import com.Library.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

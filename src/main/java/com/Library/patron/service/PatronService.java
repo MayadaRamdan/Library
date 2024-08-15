@@ -6,6 +6,7 @@ import com.Library.exceptions.PatronNotFoundException;
 import com.Library.patron.mapper.PatronMapper;
 import com.Library.patron.repo.PatronRepo;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PatronService {
 
 
-    @Autowired
-    PatronRepo patronRepo ;
+   private final PatronRepo patronRepo ;
 
     @Transactional(readOnly = true)
     public List<PatronDto> getAllPatron(){

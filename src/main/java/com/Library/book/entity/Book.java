@@ -1,10 +1,7 @@
 package com.Library.book.entity;
 
-import com.Library.book.dto.BookDto;
 import com.Library.book.BookStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.*;
 
 @Entity
