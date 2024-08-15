@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "82bc2345-e72a-4b14-9f12-93e4a8a16815",
+		"name": "Asset_Library_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31467825"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "List All Books",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzIzNzAxMzU4LCJleHAiOjE3MjM3MDQ5NTh9.3wC4tGBLpAnfZftHWKawkxnFs3qfQrEt98vI2o_783UHRpq-WNMv03LEQaNwgR9P",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/library/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzIzNzAxMzU4LCJleHAiOjE3MjM3MDQ5NTh9.3wC4tGBLpAnfZftHWKawkxnFs3qfQrEt98vI2o_783UHRpq-WNMv03LEQaNwgR9P",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"title\" : \"test\",\n    \"author\" :\"magdsgdy\",\n    \"publicationYear\" : \"2019\",\n    \"isbn\" : \"6564546546500098\",\n    \"status\" : \"ACTIVE\"\n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/library/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a book byId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/books/search?id=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 8,\n        \"title\": \"dentist\",\n        \"author\": null,\n        \"publicationYear\": \"2019\",\n        \"isbn\": \"5467328910\",\n        \"status\": \"ACTIVE\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/library/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/books/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"books",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patrons",
+			"item": [
+				{
+					"name": "list of all patron",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/patrons",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"patrons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a patron",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/patrons/search?id=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"patrons",
+								"search"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a patron",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n     \"name\" : \"mohammed\",\n     \"phone\" : \"01005432981\",\n     \"email\" : \"mohammed@gmail.com\",\n     \"address\" : \"geza\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/library/api/patrons",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"patrons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a patron",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 4,\n    \"name\" : \"mena morad\",\n     \"phone\" : \"01005432981\",\n     \"email\" : \"mohammed@gmail.com\",\n     \"address\" : \"geza\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/library/api/patrons",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"patrons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a patron",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/patrons/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"patrons",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrowing",
+			"item": [
+				{
+					"name": "Allow a patron to borrow a book.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/library/api/borrow/5/patron/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"library",
+								"api",
+								"borrow",
+								"5",
+								"patron",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Record the return of a borrowed book by a patron.",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" :\"user\",\n    \"password\":\"pass\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/library/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"library",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
