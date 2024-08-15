@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "borrowing")
@@ -36,7 +37,18 @@ public class Borrowing {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Borrowing borrowing = (Borrowing) o;
+        return Objects.equals(book, borrowing.book) && Objects.equals(patron, borrowing.patron);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(book, patron);
+    }
 
 
 
